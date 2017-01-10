@@ -44,6 +44,30 @@ def hello_world():
 def scout_range():
     return jsonify({"range":ultrasonicRanger.distance()})
 
+@app.route('/led/<color>/switch/on',methods = ['GET'])
+def led_blink(color):
+    if color == 'white':
+        whiteLed.switchOn()
+    elif color == 'blue':
+        blueLed.switchOn()
+    elif color == 'red':
+        redLed.switchOn()
+    else:
+        print('😡 Houston, we have a problem')
+    return jsonify({"color":color})
+
+@app.route('/led/<color>/switch/off',methods = ['GET'])
+def led_blink(color):
+    if color == 'white':
+        whiteLed.switchOff()
+    elif color == 'blue':
+        blueLed.switchOff()
+    elif color == 'red':
+        redLed.switchOff()
+    else:
+        print('😡 Houston, we have a problem')
+    return jsonify({"color":color})
+
 @app.route('/led/<color>/blink',methods = ['GET'])
 def led_blink(color):
     if color == 'white':
