@@ -45,7 +45,7 @@ def scout_range():
     return jsonify({"range":ultrasonicRanger.distance()})
 
 @app.route('/led/<color>/switch/on',methods = ['GET'])
-def led_blink(color):
+def led_on(color):
     if color == 'white':
         whiteLed.switchOn()
     elif color == 'blue':
@@ -57,7 +57,7 @@ def led_blink(color):
     return jsonify({"color":color})
 
 @app.route('/led/<color>/switch/off',methods = ['GET'])
-def led_blink(color):
+def led_off(color):
     if color == 'white':
         whiteLed.switchOff()
     elif color == 'blue':
